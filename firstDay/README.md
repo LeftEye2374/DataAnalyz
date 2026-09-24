@@ -70,3 +70,14 @@ python -m pip install pandas numpy scikit-learn matplotlib jupyter catboost
 jupyter notebook
 ```
 
+## API
+
+Модель обёрнута в REST API на FastAPI, задеплоена в Docker-контейнере.
+
+Запуск:
+\`\`\`
+docker build -t titanic-api .
+docker run -p 8000:8000 titanic-api
+\`\`\`
+
+Документация API доступна по адресу http://127.0.0.1:8000/docs
