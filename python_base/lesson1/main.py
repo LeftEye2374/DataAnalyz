@@ -9,7 +9,10 @@ async def fetch_data(seconds):
     return 42
 
 async def main():
-    print(await fetch_data(2))
-    print(await fetch_data(4))
+    start = time.perf_counter()
+   
+    await asyncio.gather(fetch_data(2), fetch_data(4), fetch_data(5))
+
+    print(time.perf_counter() - start)
 
 asyncio.run(main())
