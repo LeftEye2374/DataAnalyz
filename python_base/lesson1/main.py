@@ -1,15 +1,26 @@
-class User:
+import time
 
-    def __init__(self, name, age):
-        self.name = name
-        self.age = age
+def decorator_timer(func):
+    def wrapper():
+        print("Начало исполнения")
+        start = time.time()
+        func()
+        diff = time.time() - start
+        print(diff)
+    return wrapper
 
-    def say_hello(self):
-        print("Hello " + self.name)
-    def print_age(self):
-        print(self.age)
+@decorator_timer
+def load_File():
+    print("Start loading file")
+    time.sleep(2)
 
-user1 = User("Misha", 22)
+@decorator_timer
+def load_file_fast():
+    print("Start loading file")
+    time.sleep(0.5)
 
-user1.say_hello()
-user1.print_age()
+load_File()
+load_file_fast()
+
+
+
